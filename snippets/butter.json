@@ -18,11 +18,21 @@
   "Public Function": {
     "prefix": "pfn",
     "body": [
-      "pub fn ${1:name}(${2}) {",
+      "/// ${2:Describe this function}",
+      "pub fn ${1:name}(${3}) {",
       "\t${0}",
       "}"
     ],
     "description": "Define a public Butter function"
+  },
+  "Typed Function": {
+    "prefix": "tfn",
+    "body": [
+      "fn ${1:name}(${2:param: string}) -> ${3:string} {",
+      "\t${0}",
+      "}"
+    ],
+    "description": "Define a Butter function with return annotations"
   },
   "Error Tag": {
     "prefix": "err",
@@ -30,6 +40,13 @@
       "error ${1:MyError};"
     ],
     "description": "Declare a Butter error tag"
+  },
+  "Public Error Tag": {
+    "prefix": "perr",
+    "body": [
+      "pub error ${1:MyError};"
+    ],
+    "description": "Declare a public Butter error tag"
   },
   "Value Error Binding": {
     "prefix": "verr",
@@ -40,5 +57,14 @@
       "}"
     ],
     "description": "Bind a value and error result"
+  },
+  "If Error": {
+    "prefix": "iferr",
+    "body": [
+      "if (${1:err} != nil) {",
+      "\t${0}",
+      "}"
+    ],
+    "description": "Handle a Butter error value"
   }
 }

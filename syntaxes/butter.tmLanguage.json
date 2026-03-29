@@ -23,6 +23,14 @@
     "comments": {
       "patterns": [
         {
+          "name": "comment.line.documentation.butter",
+          "begin": "///",
+          "beginCaptures": {
+            "0": { "name": "punctuation.definition.comment.butter" }
+          },
+          "end": "$\\n?"
+        },
+        {
           "name": "comment.line.double-slash.butter",
           "begin": "//",
           "beginCaptures": {
@@ -104,20 +112,18 @@
       "patterns": [
         {
           "name": "meta.type.annotation.butter",
-          "match": "(:)\\s*([A-Za-z_][A-Za-z0-9_]*)(\\?)?",
+          "match": "(:)\\s*((?:\\[[A-Za-z_\\x{80}-\\x{10FFFF}][A-Za-z0-9_\\x{80}-\\x{10FFFF}]*\\]|[A-Za-z_\\x{80}-\\x{10FFFF}][A-Za-z0-9_\\x{80}-\\x{10FFFF}]*)(?:\\s*,\\s*(?:\\[[A-Za-z_\\x{80}-\\x{10FFFF}][A-Za-z0-9_\\x{80}-\\x{10FFFF}]*\\]|[A-Za-z_\\x{80}-\\x{10FFFF}][A-Za-z0-9_\\x{80}-\\x{10FFFF}]*))*)",
           "captures": {
             "1": { "name": "punctuation.separator.type.butter" },
-            "2": { "name": "storage.type.annotation.butter" },
-            "3": { "name": "keyword.operator.nullable.butter" }
+            "2": { "name": "storage.type.annotation.butter" }
           }
         },
         {
           "name": "meta.return.annotation.butter",
-          "match": "(->)\\s*([A-Za-z_][A-Za-z0-9_]*)(\\?)?",
+          "match": "(->)\\s*((?:\\[[A-Za-z_\\x{80}-\\x{10FFFF}][A-Za-z0-9_\\x{80}-\\x{10FFFF}]*\\]|[A-Za-z_\\x{80}-\\x{10FFFF}][A-Za-z0-9_\\x{80}-\\x{10FFFF}]*)(?:\\s*,\\s*(?:\\[[A-Za-z_\\x{80}-\\x{10FFFF}][A-Za-z0-9_\\x{80}-\\x{10FFFF}]*\\]|[A-Za-z_\\x{80}-\\x{10FFFF}][A-Za-z0-9_\\x{80}-\\x{10FFFF}]*))*)",
           "captures": {
             "1": { "name": "storage.modifier.return-type.butter" },
-            "2": { "name": "storage.type.annotation.butter" },
-            "3": { "name": "keyword.operator.nullable.butter" }
+            "2": { "name": "storage.type.annotation.butter" }
           }
         }
       ]
@@ -126,7 +132,7 @@
       "patterns": [
         {
           "name": "support.function.builtin.butter",
-          "match": "\\bimport\\b(?=\\s*\\()"
+          "match": "\\b(import|len|print|println)\\b(?=\\s*\\()"
         }
       ]
     },
@@ -203,7 +209,7 @@
         },
         {
           "name": "keyword.operator.arithmetic.butter",
-          "match": "\\+|\\-|\\*|/"
+          "match": "\\+|\\-|\\*|/|%"
         },
         {
           "name": "keyword.operator.logical.butter",
