@@ -112,7 +112,7 @@
       "patterns": [
         {
           "name": "meta.type.annotation.butter",
-          "match": "(:)\\s*((?:\\[[A-Za-z_\\x{80}-\\x{10FFFF}][A-Za-z0-9_\\x{80}-\\x{10FFFF}]*\\]|[A-Za-z_\\x{80}-\\x{10FFFF}][A-Za-z0-9_\\x{80}-\\x{10FFFF}]*)(?:\\s*,\\s*(?:\\[[A-Za-z_\\x{80}-\\x{10FFFF}][A-Za-z0-9_\\x{80}-\\x{10FFFF}]*\\]|[A-Za-z_\\x{80}-\\x{10FFFF}][A-Za-z0-9_\\x{80}-\\x{10FFFF}]*))*)",
+          "match": "(:)\\s*(\\[[A-Za-z_\\x{80}-\\x{10FFFF}][A-Za-z0-9_\\x{80}-\\x{10FFFF}]*\\]|[A-Za-z_\\x{80}-\\x{10FFFF}][A-Za-z0-9_\\x{80}-\\x{10FFFF}]*)",
           "captures": {
             "1": { "name": "punctuation.separator.type.butter" },
             "2": { "name": "storage.type.annotation.butter" }
