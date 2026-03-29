@@ -1,6 +1,6 @@
 # Butter VS Code
 
-This is a VS Code extension for the Butter language.
+This is a VS Code extension for the Butter language, written by AI.
 
 It currently provides:
 
