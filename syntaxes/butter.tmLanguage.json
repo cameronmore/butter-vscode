@@ -1,0 +1,267 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Butter",
+  "scopeName": "source.butter",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#imports" },
+    { "include": "#error-declarations" },
+    { "include": "#function-declarations" },
+    { "include": "#variable-declarations" },
+    { "include": "#type-annotations" },
+    { "include": "#builtins" },
+    { "include": "#keywords" },
+    { "include": "#constants" },
+    { "include": "#numbers" },
+    { "include": "#strings" },
+    { "include": "#operators" },
+    { "include": "#function-calls" },
+    { "include": "#properties" },
+    { "include": "#identifiers" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.butter",
+          "begin": "//",
+          "beginCaptures": {
+            "0": { "name": "punctuation.definition.comment.butter" }
+          },
+          "end": "$\\n?"
+        },
+        {
+          "name": "comment.block.butter",
+          "begin": "/\\*",
+          "beginCaptures": {
+            "0": { "name": "punctuation.definition.comment.begin.butter" }
+          },
+          "end": "\\*/",
+          "endCaptures": {
+            "0": { "name": "punctuation.definition.comment.end.butter" }
+          }
+        }
+      ]
+    },
+    "imports": {
+      "patterns": [
+        {
+          "name": "meta.import.butter",
+          "match": "\\b(import)\\s*(\\()\\s*(\"(?:\\\\.|[^\"])*\")\\s*(\\))",
+          "captures": {
+            "1": { "name": "support.function.builtin.import.butter" },
+            "2": { "name": "punctuation.section.parens.begin.butter" },
+            "3": { "name": "string.quoted.double.import-path.butter" },
+            "4": { "name": "punctuation.section.parens.end.butter" }
+          }
+        }
+      ]
+    },
+    "error-declarations": {
+      "patterns": [
+        {
+          "name": "meta.error.declaration.butter",
+          "match": "\\b(pub)\\s+(error)\\s+([A-Za-z_\\x{80}-\\x{10FFFF}][A-Za-z0-9_\\x{80}-\\x{10FFFF}]*)|\\b(error)\\s+([A-Za-z_\\x{80}-\\x{10FFFF}][A-Za-z0-9_\\x{80}-\\x{10FFFF}]*)",
+          "captures": {
+            "1": { "name": "storage.modifier.public.butter" },
+            "2": { "name": "storage.type.error.butter" },
+            "3": { "name": "entity.name.type.error.butter" },
+            "4": { "name": "storage.type.error.butter" },
+            "5": { "name": "entity.name.type.error.butter" }
+          }
+        }
+      ]
+    },
+    "function-declarations": {
+      "patterns": [
+        {
+          "name": "meta.function.declaration.butter",
+          "match": "\\b(pub)\\s+(fn)\\s+([A-Za-z_\\x{80}-\\x{10FFFF}][A-Za-z0-9_\\x{80}-\\x{10FFFF}]*)\\s*(?=\\()|\\b(fn)\\s+([A-Za-z_\\x{80}-\\x{10FFFF}][A-Za-z0-9_\\x{80}-\\x{10FFFF}]*)\\s*(?=\\()",
+          "captures": {
+            "1": { "name": "storage.modifier.public.butter" },
+            "2": { "name": "storage.type.function.butter" },
+            "3": { "name": "entity.name.function.butter" },
+            "4": { "name": "storage.type.function.butter" },
+            "5": { "name": "entity.name.function.butter" }
+          }
+        }
+      ]
+    },
+    "variable-declarations": {
+      "patterns": [
+        {
+          "name": "meta.variable.declaration.butter",
+          "match": "\\b(pub)\\s+(let|const)\\b|\\b(let|const)\\b",
+          "captures": {
+            "1": { "name": "storage.modifier.public.butter" },
+            "2": { "name": "storage.type.variable.butter" },
+            "3": { "name": "storage.type.variable.butter" }
+          }
+        }
+      ]
+    },
+    "type-annotations": {
+      "patterns": [
+        {
+          "name": "meta.type.annotation.butter",
+          "match": "(:)\\s*([A-Za-z_][A-Za-z0-9_]*)(\\?)?",
+          "captures": {
+            "1": { "name": "punctuation.separator.type.butter" },
+            "2": { "name": "storage.type.annotation.butter" },
+            "3": { "name": "keyword.operator.nullable.butter" }
+          }
+        },
+        {
+          "name": "meta.return.annotation.butter",
+          "match": "(->)\\s*([A-Za-z_][A-Za-z0-9_]*)(\\?)?",
+          "captures": {
+            "1": { "name": "storage.modifier.return-type.butter" },
+            "2": { "name": "storage.type.annotation.butter" },
+            "3": { "name": "keyword.operator.nullable.butter" }
+          }
+        }
+      ]
+    },
+    "builtins": {
+      "patterns": [
+        {
+          "name": "support.function.builtin.butter",
+          "match": "\\bimport\\b(?=\\s*\\()"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.flow.butter",
+          "match": "\\b(break|continue|else|for|if|return|while)\\b"
+        },
+        {
+          "name": "keyword.control.language.butter",
+          "match": "\\b(const|error|fn|let|pub)\\b"
+        }
+      ]
+    },
+    "constants": {
+      "patterns": [
+        {
+          "name": "constant.language.boolean.butter",
+          "match": "\\b(true|false)\\b"
+        },
+        {
+          "name": "constant.language.nil.butter",
+          "match": "\\b(nil)\\b"
+        },
+        {
+          "name": "support.type.primitive.butter",
+          "match": "\\b(int|float|bool|string|error)\\b"
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.float.butter",
+          "match": "\\b\\d+\\.\\d+\\b"
+        },
+        {
+          "name": "constant.numeric.integer.butter",
+          "match": "\\b\\d+\\b"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.butter",
+          "begin": "\"",
+          "beginCaptures": {
+            "0": { "name": "punctuation.definition.string.begin.butter" }
+          },
+          "end": "\"",
+          "endCaptures": {
+            "0": { "name": "punctuation.definition.string.end.butter" }
+          },
+          "patterns": [
+            {
+              "name": "constant.character.escape.butter",
+              "match": "\\\\."
+            }
+          ]
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.comparison.butter",
+          "match": "==|!=|<=|>=|<|>"
+        },
+        {
+          "name": "keyword.operator.assignment.butter",
+          "match": "="
+        },
+        {
+          "name": "keyword.operator.arithmetic.butter",
+          "match": "\\+|\\-|\\*|/"
+        },
+        {
+          "name": "keyword.operator.logical.butter",
+          "match": "!"
+        },
+        {
+          "name": "punctuation.separator.butter",
+          "match": "[.,;:]"
+        },
+        {
+          "name": "punctuation.section.braces.begin.butter",
+          "match": "\\{"
+        },
+        {
+          "name": "punctuation.section.braces.end.butter",
+          "match": "\\}"
+        },
+        {
+          "name": "punctuation.section.brackets.begin.butter",
+          "match": "\\["
+        },
+        {
+          "name": "punctuation.section.brackets.end.butter",
+          "match": "\\]"
+        },
+        {
+          "name": "punctuation.section.parens.begin.butter",
+          "match": "\\("
+        },
+        {
+          "name": "punctuation.section.parens.end.butter",
+          "match": "\\)"
+        }
+      ]
+    },
+    "function-calls": {
+      "patterns": [
+        {
+          "name": "entity.name.function.call.butter",
+          "match": "\\b[A-Za-z_\\x{80}-\\x{10FFFF}][A-Za-z0-9_\\x{80}-\\x{10FFFF}]*\\b(?=\\s*\\()"
+        }
+      ]
+    },
+    "properties": {
+      "patterns": [
+        {
+          "name": "variable.other.property.butter",
+          "match": "(?<=\\.)[A-Za-z_\\x{80}-\\x{10FFFF}][A-Za-z0-9_\\x{80}-\\x{10FFFF}]*\\b"
+        }
+      ]
+    },
+    "identifiers": {
+      "patterns": [
+        {
+          "name": "variable.other.butter",
+          "match": "\\b[A-Za-z_\\x{80}-\\x{10FFFF}][A-Za-z0-9_\\x{80}-\\x{10FFFF}]*\\b"
+        }
+      ]
+    }
+  }
+}

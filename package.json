@@ -1,0 +1,70 @@
+{
+  "name": "butter-syntax",
+  "displayName": "Butter Syntax",
+  "description": "Syntax highlighting and editor configuration for the Butter language",
+  "version": "0.1.0",
+  "publisher": "butter-local",
+  "license": "UNLICENSED",
+  "private": true,
+  "main": "./extension.js",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "keywords": [
+    "butter",
+    "language",
+    "syntax"
+  ],
+  "activationEvents": [
+    "onLanguage:butter"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "butter",
+        "aliases": [
+          "Butter",
+          "butter"
+        ],
+        "extensions": [
+          ".butter"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "butter",
+        "scopeName": "source.butter",
+        "path": "./syntaxes/butter.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "butter",
+        "path": "./snippets/butter.json"
+      }
+    ],
+    "configuration": {
+      "title": "Butter",
+      "properties": {
+        "butter.analyzerPath": {
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to the butter-analyzer binary. Leave empty to use the local default."
+        },
+        "butter.bunPath": {
+          "type": "string",
+          "default": "bun",
+          "description": "Path to the Bun executable used to launch the Butter language server."
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "vscode-languageclient": "^9.0.1"
+  }
+}

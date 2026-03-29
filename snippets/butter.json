@@ -1,0 +1,44 @@
+{
+  "Import Module": {
+    "prefix": "imp",
+    "body": [
+      "let ${1:mod} = import(\"${2:std/io}\");"
+    ],
+    "description": "Import a Butter module"
+  },
+  "Function": {
+    "prefix": "fn",
+    "body": [
+      "fn ${1:name}(${2}) {",
+      "\t${0}",
+      "}"
+    ],
+    "description": "Define a Butter function"
+  },
+  "Public Function": {
+    "prefix": "pfn",
+    "body": [
+      "pub fn ${1:name}(${2}) {",
+      "\t${0}",
+      "}"
+    ],
+    "description": "Define a public Butter function"
+  },
+  "Error Tag": {
+    "prefix": "err",
+    "body": [
+      "error ${1:MyError};"
+    ],
+    "description": "Declare a Butter error tag"
+  },
+  "Value Error Binding": {
+    "prefix": "verr",
+    "body": [
+      "let ${1:value}, err = ${2:doThing}(${3});",
+      "if (err != nil) {",
+      "\t${0}",
+      "}"
+    ],
+    "description": "Bind a value and error result"
+  }
+}
